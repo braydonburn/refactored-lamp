@@ -1,5 +1,5 @@
 # refactored_lamp
-Dotfiles used in configuring Ubuntu with I3 window manager.  
+Dotfiles used when configuring Ubuntu with I3 window manager.  
   
   
 System:  
