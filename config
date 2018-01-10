@@ -190,4 +190,3 @@ exec_always feh --bg-fill ~/Wallpaper.png
 
 #Redshift
 exec_always redshift-gtk -l -27.51:153.03 -t 6500:3600
-exec_always wicd-client
