@@ -181,13 +181,14 @@ bindsym XF86AudioPrev exec playerctl previous
 bindsym Print exec gnome-screenshot -a
 
 #Start Compton
-exec_always --no-startup-id compton
+exec_always --no-startup-id compton -D 5 -I 0.03 -O 0.01 -f
 
 #Lock Screen
 bindsym $mod+shift+x exec i3lock --color "$bg-color"
 
-#Wallpaper
-exec_always feh --bg-fill ~/Wallpaper.jpg
+#Wallpaper - Setting background to solid colour to avoid background showing during fade transitions
+#exec_always feh --bg-fill ~/Wallpaper.jpg
+exec_always hsetroot -solid "$bg-color"
 
 #Redshift
 exec redshift-gtk -l -27.51:153.03 -t 6500:3600
