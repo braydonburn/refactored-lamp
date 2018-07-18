@@ -1,0 +1,9 @@
+rofi.color-enabled: true
+rofi.font:Fantasque\ Sans\ Mono 18
+!                  bg       border   separator
+rofi.color-window: #2f343f, #282828, #ffffff
+
+!                  bg       fg       bg-alt   hl-bg    hl-fg
+rofi.color-normal: argb:00282828, #ffffff, argb:00282828, #373e4c, #282828
+rofi.color-active: argb:00282828, #ffffff, argb:00282828, #373e4c, #282828
+rofi.color-urgent: argb:00282828, #ffffff, argb:00282828, #373e4c, #282828
