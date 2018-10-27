@@ -1,0 +1,15 @@
+Scripts to restart blueman bluetooth manager when lid is closed to avoid weird wake up issues.
+
+Copy restart-bluetooth.sh to /etc/acpi/
+Copy lid-power to /etc/acpi/events
+
+Update acpi folder permissions so script can automatically be ran without password:
+
+	Run sudo visudo.
+
+	Add an entry for username and the restart bluetooth script.
+
+	username ALL=(ALL) NOPASSWD: /etc/acpi/restart-bluetooth.sh
+
+
+
