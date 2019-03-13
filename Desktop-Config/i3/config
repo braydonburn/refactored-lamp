@@ -83,10 +83,10 @@ set $workspace2 "2: Terminals"
 set $workspace3 "3: Code"
 set $workspace4 "4: Spotify"
 
-workspace "1: Chrome" output HDMI-1
-workspace "2: Terminals" output DP-1
-workspace "3: Code" output HDMI-1
-workspace "4: Spotify" output DP-1
+workspace "1: Chrome" output DP-0
+workspace "2: Terminals" output HDMI-0
+workspace "3: Code" output DP-0
+workspace "4: Spotify" output HDMI-0
 
 assign [class="Google-chrome"] "1: Chrome"
 assign [class="Code"] "3: Code"
@@ -177,20 +177,19 @@ for_window [class="Google-chrome"] border pixel 0
 for_window [class="Spotify"] border pixel 0
 
 # Pulse Audio controls
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
-bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 5%-
-bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+
+bindsym $mod+F1 exec amixer -D pulse sset Master 5%-
+bindsym $mod+F3 exec amixer -D pulse sset Master 5%+
 
 # Media player controls
-bindsym $mod+F11 exec playerctl play-pause
-bindsym $mod+F10 exec playerctl next
-bindsym $mod+F12 exec playerctl previous
+bindsym $mod+F2 exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
+bindsym $mod+F4 exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next
+bindsym $mod+F12 exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
 
 #Printscreen, select screen and save to clipboard
 bindsym Print exec shutter -s
 
 #Start Compton
-exec_always --no-startup-id compton -D 5 -I 0.03 -O 0.01 -f
+exec_always --no-startup-id compton
 
 #Lock Screen
 bindsym $mod+shift+x exec i3lock-fancy
@@ -204,4 +203,7 @@ exec redshift-gtk -l -27.51:153.03 -t 6500:3600
 
 exec --no-startup-id google-chrome
 exec --no-startup-id code
+exec i3-msg 'workspace "2: Terminals" exec --no-startup-id gedit'
 exec i3-msg 'workspace "4: Spotify"; exec --no-startup-id spotify'
+
+exec_always --no-startup-id xrandr --output HDMI-0 --left-of DP-0
