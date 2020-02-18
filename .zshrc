@@ -1,48 +1,20 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-export WORKON_HOME=~/.virtualenvs
-source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
+source ~/.oh-my-zsh/plugins/git/git.plugin.zsh
 
 # Path to your oh-my-zsh installation.
-  export ZSH="/home/braydon/.oh-my-zsh"
+export ZSH=$HOME/.oh-my-zsh
+
+# Github PR Sources
+export GITHUB_PR_USER=braydonburn
+export GITHUB_AUTH_TOKEN=7894e4abf642a248a3df9d007f637ec9c0a94ec1
+export PATH="$PATH:/home/braydon/Code/clipchamp-stack/scripts/bin" 
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="robbyrussell"
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=( git zsh-autosuggestions zsh-completions zsh-syntax-highlighting )
-
-source $ZSH/oh-my-zsh.sh
-
-# User configuration
-export MANPATH="/usr/local/man:$MANPATH"
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# tabtab 
- for serverless package
-# uninstall by removing these lines or running `tabtab uninstall serverless`
-[[ -f /home/braydon/Code/clipchamp-stack/backend/lambda/node_modules/tabtab/.completions/serverless.zsh ]] && . /home/braydon/Code/clipchamp-stack/backend/lambda/node_modules/tabtab/.completions/serverless.zsh
-# tabtab source for sls package
-# uninstall by removing these lines or running `tabtab uninstall sls`
-[[ -f /home/braydon/Code/clipchamp-stack/backend/lambda/node_modules/tabtab/.completions/sls.zsh ]] && . /home/braydon/Code/clipchamp-stack/backend/lambda/node_modules/tabtab/.completions/sls.zsh
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/braydon/Downloads/google-cloud-sdk/path.zsh.inc' ]; then source '/home/braydon/Downloads/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/home/braydon/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then source '/home/braydon/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
-
-
-
-######################################UNUSED CODE##################################################
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
 # cause zsh load theme from this variable instead of
@@ -62,6 +34,8 @@ if [ -f '/home/braydon/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then so
 
 # Uncomment the following line to change how often to auto-update (in days).
 # export UPDATE_ZSH_DAYS=13
+
+export NODE_OPTIONS=--max_old_space_size=16384
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -88,6 +62,21 @@ if [ -f '/home/braydon/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then so
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(git zsh-completions zsh-autosuggestions)
+
+source $ZSH/oh-my-zsh.sh
+export CUSTOM_GAE_PROJECT_ID="clipchamp-dev-braydon-yvfaz"
+export BITBUCKET_PR_USER="braydonburn"
+export BITBUCKET_PR_APP_PW="dKDRzC3DAWUumkvBfwea"
+
+# User configuration
+
+# export MANPATH="/usr/local/man:$MANPATH"
+
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
@@ -113,3 +102,38 @@ if [ -f '/home/braydon/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then so
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /home/braydon/Code/clipchamp-stack/backend/lambda/node_modules/tabtab/.completions/serverless.zsh ]] && . /home/braydon/Code/clipchamp-stack/backend/lambda/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /home/braydon/Code/clipchamp-stack/backend/lambda/node_modules/tabtab/.completions/sls.zsh ]] && . /home/braydon/Code/clipchamp-stack/backend/lambda/node_modules/tabtab/.completions/sls.zsh
+
+export PATH="/home/braydon/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+function stopwatch(){
+  date1=`date +%s`; 
+   while true; do 
+    echo -ne "$(date -u --date @$((`date +%s` - $date1)) +%H:%M:%S)\r"; 
+    sleep 0.1
+   done
+}
+
+
+# tabtab source for slss package
+# uninstall by removing these lines or running `tabtab uninstall slss`
+[[ -f /home/braydon/Code/clipchamp-stack/backend/lambda/node_modules/tabtab/.completions/slss.zsh ]] && . /home/braydon/Code/clipchamp-stack/backend/lambda/node_modules/tabtab/.completions/slss.zsh
+
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+source /home/braydon/.local/bin/virtualenvwrapper.sh
+
+export N_PREFIX=$HOME/.n
+export PATH=$N_PREFIX/bin:$PATH
+
+
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
